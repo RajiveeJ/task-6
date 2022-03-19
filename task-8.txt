@@ -1,61 +1,53 @@
 Q1.
-function Person() {
-		this.firstName = "unknown";
-		this.lastName = "unknown";
-		this.designation="unknown";
-		this.location="unknown";
+class Person{
+	constructor(firstName,lastName,designation,location){
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.designation=designation;
+		this.location=location;
 
 	}
-
-	var person1 = new Person();
-	person1.firstName = "Rajivee";
-	person1.lastName = "J";
-	person1.designation="Test Analyst";
-	person1.location="Mysore";
-            
-	console.log(person1.firstName + " " + person1.lastName);
-	console.log("Designation : " + person1.designation);
-	console.log("Location : " + person1.location);
-	var person2 = new Person();
-	person2.firstName = "Kaavya";
-	person2.lastName = "J";
-        person2.designation="Student";
-	person2.location="Tanjore";   
-	console.log(person2.firstName + " " + person2.lastName );
-	console.log("Designation : " + person2.designation);
-	console.log("Location : " + person2.location);
+	getDetails(){
+		return `
+			Fullname : ${this.firstName} ${this.lastName}
+			Designation: ${this.designation}
+			Location: ${this.location}`
+}
+}
+	let person1 = new Person("Rajivee","J","Test Analyst","Mysore");
+	
+	console.log(person1.getDetails());
+	let person2 = new Person("Kaavya","J","Student","Tanjore");
+	console.log(person2.getDetails());
 output:
-Rajivee J
+FullName: Rajivee J
 Designation : Test Analyst
 Location : Mysore
-Kaavya J
+FullName: Kaavya J
 Designation : Student
 Location : Tanjore
 
 Q2.
-function counter(distance) {
-  let totalCost = 0, dist = distance * 1000;
-  for (let m = 1; m <= dist; m++) {
-    if (m <= 100) totalCost += 100;
-    else totalCost += (m <= 500) ? 50 : 10;
-  }
-  return totalCost;
-}
-
-console.log(1000*.001,counter(.001))
-console.log(1000*.01,counter(.01))
-console.log(1000*.1,counter(.1))
-console.log(1000*.2,counter(.2))
-console.log(1000*.5,counter(.5))
-console.log(1000,counter(1))
+class Uber{
+    constructor(distance) {
+        this.distance=distance;
+    }
+    counter(distance){
+      let totalCost = 0, dist = distance * 1000;
+      for (let m = 1; m <= dist; m++) {
+        if (m <= 100) totalCost += 100;
+        else totalCost += (m <= 500) ? 50 : 10;
+      }
+      return totalCost;
+    }
+    }
+    
+    let uber1=new Uber(1000*.2);
+    console.log(uber1.counter(.2));
 
 output:
-1 100
-10 1000
-100 10000
 200 15000
-500 30000
-1000 35000
+
 Execution Time:
 0.067s
 Memory Used:
